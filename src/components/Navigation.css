@@ -1,0 +1,11 @@
+.navigation {
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    background: purple;
+    padding: 10px;
+}
+.navigation a {
+    color: turquoise;
+    text-decoration: none;
+}
