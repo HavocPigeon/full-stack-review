@@ -1,0 +1,1 @@
+insert into user (auth0_id, text, email, name, picture_url) values ($1, $2, $3, $4);

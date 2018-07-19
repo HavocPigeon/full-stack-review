@@ -1,0 +1,1 @@
+select * from user where auth0_id = $1;
