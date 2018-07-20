@@ -1,11 +1,41 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {login} from '../redux/reducer';
+import axios from 'axios';
 
-export default class Profile extends Component {
-   render(){
+class Profile extends Component{
+    componentDidMount(){
+        axios.get('/api/profile').then(res => {
+          this.props.login(res.data);
+        })
+    }
+    render(){
+        console.log(this.props.user)
        return(
-           <div>
+           <div className='profile'>
            <h1>Profile</h1>
+           {this.props.user ? <div><div>Name: {this.props.user.name}</div>
+           <div>Email: {this.props.user.email}</div>
+           <div>
+               <img src={this.props.user.picture_url} alt='Profile' />
+           </div></div> : <div>Loading . . .</div>}
+           
            </div>
        )
    }
 }
+
+
+
+const mapStateToProps = state => {
+    const {user} = state;
+    return {
+        user,
+    }
+}
+
+const mapDispatchToProps = {
+    login,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

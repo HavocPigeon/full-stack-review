@@ -1,1 +1,1 @@
-select * from user where auth0_id = $1;
+select * from users where auth0_id = $1;
